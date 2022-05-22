@@ -24,25 +24,24 @@ def ndcg(scores, labels, k):
     return ndcg.mean()
 
 
-# 计算各项指标
+
 def recalls_and_ndcgs_for_ks(scores, labels, ks):
     metrics = {}
 
     scores = scores
     labels = labels
-    # (batch_size, 100+1) => (batch_size)
-    # 对101个label求和结果为1 其余位置都是0
+
     answer_count = labels.sum(1)
 
     labels_float = labels.float()
-    # 按照分数从小到大排序 (由于取负值 相当于是从大到小排序) 得到的是下标
+
     rank = (-scores).argsort(dim=1)
-    # 对排序完的序列进行处理
+
     cut = rank
-    # 计算每一项指标的结果
+
     for k in sorted(ks, reverse=True):
        cut = cut[:, :k]
-       # (batch_size, indicator_size)
+
        hits = labels_float.gather(1, cut)
        metrics['Recall@%d' % k] = \
            (hits.sum(1) / torch.min(torch.Tensor([k]).to(labels.device), labels.sum(1).float())).mean().cpu().item()
