@@ -4,7 +4,7 @@ def set_template(args):
 
     else:
         args.mode = 'train'
-        args.dataset_code = 'beauty'
+        #args.dataset_code = 'beauty'
         args.min_rating = 0
         args.min_uc = 5
         args.min_sc = 5
