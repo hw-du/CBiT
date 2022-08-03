@@ -12,19 +12,19 @@ class toysDataset(AbstractDataset):
 
     @classmethod
     def url(cls):
-        return 'http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/reviews_Toys_and_Games_5.json.gz'
+        return 'http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/ratings_Toys_and_Games.csv'
 
     @classmethod
     def zip_file_content_is_folder(cls):
-        return True
+        return False
 
     @classmethod
     def all_raw_file_names(cls):
-        return ['placeholder.txt']
+        return ['ratings_Toys_and_Games.csv']
 
     def load_ratings_df(self):
         folder_path = self._get_rawdata_folder_path()
-        file_path = folder_path.joinpath('placeholder.txt')
+        file_path = folder_path.joinpath('ratings_Toys_and_Games.csv')
         df = pd.read_csv(file_path, sep=',', header=None)
         df.columns = ['uid', 'sid', 'rating', 'timestamp']
         return df
