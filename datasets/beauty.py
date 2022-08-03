@@ -16,11 +16,11 @@ class beautyDataset(AbstractDataset):
 
     @classmethod
     def zip_file_content_is_folder(cls):
-        return True
+        return False
 
     @classmethod
     def all_raw_file_names(cls):
-        return ['reviews_Beauty_5.json.gz']
+        return ['ratings_Beauty.csv']
 
     def load_ratings_df(self):
         folder_path = self._get_rawdata_folder_path()
