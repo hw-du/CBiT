@@ -20,11 +20,11 @@ class beautyDataset(AbstractDataset):
 
     @classmethod
     def all_raw_file_names(cls):
-        return ['placeholder.txt']
+        return ['reviews_Beauty_5.json.gz']
 
     def load_ratings_df(self):
         folder_path = self._get_rawdata_folder_path()
-        file_path = folder_path.joinpath('placeholder.txt')
+        file_path = folder_path.joinpath('reviews_Beauty_5.json.gz')
         df = pd.read_csv(file_path, sep=',', header=None)
         df.columns = ['uid', 'sid', 'rating', 'timestamp']
         return df
