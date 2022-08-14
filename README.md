@@ -29,7 +29,7 @@ Training pipeline is implemented based on this repo https://github.com/jaywonchu
 Please cite our paper if you find our codes useful:
 
 ```
-@article{CBiT,
+@inproceedings{CBiT,
   author    = {Hanwen Du and
                Hui Shi and
                Pengpeng Zhao and
